@@ -107,7 +107,7 @@ class ChoPro(object):
             subtitle = gre.last_match.group(1)
             html.append('<h2>%s</h2>' % subtitle)
         elif gre.match(self.REGEX_START_OF_CHORUS, command):
-	    self.modes.add(self.MODE_CHORUS)
+            self.modes.add(self.MODE_CHORUS)
         elif gre.match(self.REGEX_END_OF_CHORUS, command):
             self.modes.remove(self.MODE_CHORUS)
         elif gre.match(self.REGEX_COMMENT, command):
@@ -120,7 +120,7 @@ class ChoPro(object):
             comment = gre.last_match.group(1)
             html.append('<p class="comment comment-box">%s</p>' % comment)
         elif gre.match(self.REGEX_START_OF_TAB, command):
-	    self.modes.add(self.MODE_TAB)
+            self.modes.add(self.MODE_TAB)
         elif gre.match(self.REGEX_END_OF_TAB, command):
             self.modes.remove(self.MODE_TAB)
         else:
@@ -163,13 +163,13 @@ class ChoPro(object):
 
             # generate chords row
             html.append('<tr class="chords-line">')
-            for i in xrange(len(chords)):
+            for i in range(len(chords)):
                 html.append('<td class="%s">%s</td>' % (self.get_chords_html_classes(), chords[i],))
             html.append('</tr>')
 
             # generate lyrics row
             html.append('<tr class="lyrics-line">')
-            for i in xrange(len(chords)):
+            for i in range(len(chords)):
                 html.append('<td class="%s">%s</td>' % (self.get_lyrics_html_classes(), lyrics[i],))
             html.append('</tr>')
 

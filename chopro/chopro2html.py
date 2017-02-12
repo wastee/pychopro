@@ -31,33 +31,33 @@ def main(argv=None):
         try:
             progname = argv[0]
             opts, args = getopt.getopt(argv[1:], OPTS['str'], OPTS['list'])
-        except getopt.error, msg:
+        except getopt.error as msg:
             raise Usage(msg)
 
         # process options
         for o, a in opts:
             if o in ('-h', '--help'):
-                print __doc__
+                print (__doc__)
                 sys.exit(0)
 
         if len(args) == 0:
             raise Usage('Missing expected input: ChoPro file path')
         else:
             chopro_file_path = args[0]
-            f = open(chopro_file_path, 'r')
+            f = open(chopro_file_path, 'r', encoding='utf-8')
             chopro = f.read()
             f.close()
             html = chopro2html(chopro)
-            print html
+            print (html)
 
-    except Usage, err:
+    except Usage as err:
         print >> sys.stderr, err.msg
         print >> sys.stderr, "for help use --help"
         return 3.14159
 
 
 def chopro2html(chopro_text):
-    from chopro.core import ChoPro
+    from core import ChoPro
     chopro = ChoPro(chopro_text)
     html = chopro.get_html()
     return html
